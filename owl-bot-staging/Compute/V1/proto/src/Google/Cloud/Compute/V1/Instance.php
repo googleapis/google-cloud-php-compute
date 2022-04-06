@@ -162,6 +162,12 @@ class Instance extends \Google\Protobuf\Internal\Message
      */
     protected $network_performance_config = null;
     /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     *
+     * Generated from protobuf field <code>optional .google.cloud.compute.v1.InstanceParams params = 78313862;</code>
+     */
+    protected $params = null;
+    /**
      * The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
      * Check the PrivateIpv6GoogleAccess enum for the list of possible values.
      *
@@ -310,6 +316,8 @@ class Instance extends \Google\Protobuf\Internal\Message
      *     @type \Google\Cloud\Compute\V1\NetworkInterface[]|\Google\Protobuf\Internal\RepeatedField $network_interfaces
      *           An array of network configurations for this instance. These specify how interfaces are configured to interact with other network services, such as connecting to the internet. Multiple interfaces are supported per instance.
      *     @type \Google\Cloud\Compute\V1\NetworkPerformanceConfig $network_performance_config
+     *     @type \Google\Cloud\Compute\V1\InstanceParams $params
+     *           Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
      *     @type string $private_ipv6_google_access
      *           The private IPv6 google access type for the VM. If not specified, use INHERIT_FROM_SUBNETWORK as default.
      *           Check the PrivateIpv6GoogleAccess enum for the list of possible values.
@@ -1197,6 +1205,42 @@ class Instance extends \Google\Protobuf\Internal\Message
     {
         GPBUtil::checkMessage($var, \Google\Cloud\Compute\V1\NetworkPerformanceConfig::class);
         $this->network_performance_config = $var;
+
+        return $this;
+    }
+
+    /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     *
+     * Generated from protobuf field <code>optional .google.cloud.compute.v1.InstanceParams params = 78313862;</code>
+     * @return \Google\Cloud\Compute\V1\InstanceParams|null
+     */
+    public function getParams()
+    {
+        return $this->params;
+    }
+
+    public function hasParams()
+    {
+        return isset($this->params);
+    }
+
+    public function clearParams()
+    {
+        unset($this->params);
+    }
+
+    /**
+     * Input only. [Input Only] Additional params passed with the request, but not persisted as part of resource payload.
+     *
+     * Generated from protobuf field <code>optional .google.cloud.compute.v1.InstanceParams params = 78313862;</code>
+     * @param \Google\Cloud\Compute\V1\InstanceParams $var
+     * @return $this
+     */
+    public function setParams($var)
+    {
+        GPBUtil::checkMessage($var, \Google\Cloud\Compute\V1\InstanceParams::class);
+        $this->params = $var;
 
         return $this;
     }

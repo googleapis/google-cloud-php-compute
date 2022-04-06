@@ -28,7 +28,7 @@ class MachineImage extends \Google\Protobuf\Internal\Message
      */
     protected $description = null;
     /**
-     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
      *
      * Generated from protobuf field <code>optional bool guest_flush = 385550813;</code>
      */
@@ -130,7 +130,7 @@ class MachineImage extends \Google\Protobuf\Internal\Message
      *     @type string $description
      *           An optional description of this resource. Provide this property when you create the resource.
      *     @type bool $guest_flush
-     *           [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     *           [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
      *     @type int|string $id
      *           [Output Only] A unique identifier for this machine image. The server defines this identifier.
      *     @type \Google\Cloud\Compute\V1\InstanceProperties $instance_properties
@@ -240,7 +240,7 @@ class MachineImage extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
      *
      * Generated from protobuf field <code>optional bool guest_flush = 385550813;</code>
      * @return bool
@@ -261,7 +261,7 @@ class MachineImage extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process. Currently only supported on Windows instances using the Volume Shadow Copy Service (VSS).
+     * [Input Only] Whether to attempt an application consistent machine image by informing the OS to prepare for the snapshot process.
      *
      * Generated from protobuf field <code>optional bool guest_flush = 385550813;</code>
      * @param bool $var

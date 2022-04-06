@@ -42,6 +42,7 @@ class ManagedInstance extends \Google\Protobuf\Internal\Message
     private $instance_health;
     /**
      * [Output Only] The status of the instance. This field is empty when the instance does not exist.
+     * Check the InstanceStatus enum for the list of possible values.
      *
      * Generated from protobuf field <code>optional string instance_status = 174577372;</code>
      */
@@ -88,6 +89,7 @@ class ManagedInstance extends \Google\Protobuf\Internal\Message
      *           [Output Only] Health state of the instance per health-check.
      *     @type string $instance_status
      *           [Output Only] The status of the instance. This field is empty when the instance does not exist.
+     *           Check the InstanceStatus enum for the list of possible values.
      *     @type \Google\Cloud\Compute\V1\ManagedInstanceLastAttempt $last_attempt
      *           [Output Only] Information about the last attempt to create or delete the instance.
      *     @type \Google\Cloud\Compute\V1\PreservedState $preserved_state_from_config
@@ -241,6 +243,7 @@ class ManagedInstance extends \Google\Protobuf\Internal\Message
 
     /**
      * [Output Only] The status of the instance. This field is empty when the instance does not exist.
+     * Check the InstanceStatus enum for the list of possible values.
      *
      * Generated from protobuf field <code>optional string instance_status = 174577372;</code>
      * @return string
@@ -262,6 +265,7 @@ class ManagedInstance extends \Google\Protobuf\Internal\Message
 
     /**
      * [Output Only] The status of the instance. This field is empty when the instance does not exist.
+     * Check the InstanceStatus enum for the list of possible values.
      *
      * Generated from protobuf field <code>optional string instance_status = 174577372;</code>
      * @param string $var

@@ -29,7 +29,7 @@ class SubnetworkLogConfig extends \Google\Protobuf\Internal\Message
      */
     protected $enable = null;
     /**
-     * Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
+     * Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
      *
      * Generated from protobuf field <code>optional string filter_expr = 183374428;</code>
      */
@@ -66,7 +66,7 @@ class SubnetworkLogConfig extends \Google\Protobuf\Internal\Message
      *     @type bool $enable
      *           Whether to enable flow logging for this subnetwork. If this field is not explicitly set, it will not appear in get listings. If not set the default behavior is determined by the org policy, if there is no org policy specified, then it will default to disabled.
      *     @type string $filter_expr
-     *           Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
+     *           Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
      *     @type float $flow_sampling
      *           Can only be specified if VPC flow logging for this subnetwork is enabled. The value of the field must be in [0, 1]. Set the sampling rate of VPC flow logs within the subnetwork where 1.0 means all collected logs are reported and 0.0 means no logs are reported. Default is 0.5 unless otherwise specified by the org policy, which means half of all collected logs are reported.
      *     @type string $metadata
@@ -156,7 +156,7 @@ class SubnetworkLogConfig extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
+     * Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
      *
      * Generated from protobuf field <code>optional string filter_expr = 183374428;</code>
      * @return string
@@ -177,7 +177,7 @@ class SubnetworkLogConfig extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * Can only be specified if VPC flow logs for this subnetwork is enabled. Export filter used to define which VPC flow logs should be logged.
+     * Can only be specified if VPC flow logs for this subnetwork is enabled. The filter expression is used to define which VPC flow logs should be exported to Cloud Logging.
      *
      * Generated from protobuf field <code>optional string filter_expr = 183374428;</code>
      * @param string $var

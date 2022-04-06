@@ -1554,6 +1554,40 @@
                 }
             }
         },
+        "NetworkEdgeSecurityServices": {
+            "clients": {
+                "grpc": {
+                    "libraryClient": "NetworkEdgeSecurityServicesGapicClient",
+                    "rpcs": {
+                        "AggregatedList": {
+                            "methods": [
+                                "aggregatedList"
+                            ]
+                        },
+                        "Delete": {
+                            "methods": [
+                                "delete"
+                            ]
+                        },
+                        "Get": {
+                            "methods": [
+                                "get"
+                            ]
+                        },
+                        "Insert": {
+                            "methods": [
+                                "insert"
+                            ]
+                        },
+                        "Patch": {
+                            "methods": [
+                                "patch"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "NetworkEndpointGroups": {
             "clients": {
                 "grpc": {
@@ -1597,6 +1631,95 @@
                         "ListNetworkEndpoints": {
                             "methods": [
                                 "listNetworkEndpoints"
+                            ]
+                        },
+                        "TestIamPermissions": {
+                            "methods": [
+                                "testIamPermissions"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "NetworkFirewallPolicies": {
+            "clients": {
+                "grpc": {
+                    "libraryClient": "NetworkFirewallPoliciesGapicClient",
+                    "rpcs": {
+                        "AddAssociation": {
+                            "methods": [
+                                "addAssociation"
+                            ]
+                        },
+                        "AddRule": {
+                            "methods": [
+                                "addRule"
+                            ]
+                        },
+                        "CloneRules": {
+                            "methods": [
+                                "cloneRules"
+                            ]
+                        },
+                        "Delete": {
+                            "methods": [
+                                "delete"
+                            ]
+                        },
+                        "Get": {
+                            "methods": [
+                                "get"
+                            ]
+                        },
+                        "GetAssociation": {
+                            "methods": [
+                                "getAssociation"
+                            ]
+                        },
+                        "GetIamPolicy": {
+                            "methods": [
+                                "getIamPolicy"
+                            ]
+                        },
+                        "GetRule": {
+                            "methods": [
+                                "getRule"
+                            ]
+                        },
+                        "Insert": {
+                            "methods": [
+                                "insert"
+                            ]
+                        },
+                        "List": {
+                            "methods": [
+                                "list"
+                            ]
+                        },
+                        "Patch": {
+                            "methods": [
+                                "patch"
+                            ]
+                        },
+                        "PatchRule": {
+                            "methods": [
+                                "patchRule"
+                            ]
+                        },
+                        "RemoveAssociation": {
+                            "methods": [
+                                "removeAssociation"
+                            ]
+                        },
+                        "RemoveRule": {
+                            "methods": [
+                                "removeRule"
+                            ]
+                        },
+                        "SetIamPolicy": {
+                            "methods": [
+                                "setIamPolicy"
                             ]
                         },
                         "TestIamPermissions": {
@@ -2464,6 +2587,100 @@
                 }
             }
         },
+        "RegionNetworkFirewallPolicies": {
+            "clients": {
+                "grpc": {
+                    "libraryClient": "RegionNetworkFirewallPoliciesGapicClient",
+                    "rpcs": {
+                        "AddAssociation": {
+                            "methods": [
+                                "addAssociation"
+                            ]
+                        },
+                        "AddRule": {
+                            "methods": [
+                                "addRule"
+                            ]
+                        },
+                        "CloneRules": {
+                            "methods": [
+                                "cloneRules"
+                            ]
+                        },
+                        "Delete": {
+                            "methods": [
+                                "delete"
+                            ]
+                        },
+                        "Get": {
+                            "methods": [
+                                "get"
+                            ]
+                        },
+                        "GetAssociation": {
+                            "methods": [
+                                "getAssociation"
+                            ]
+                        },
+                        "GetEffectiveFirewalls": {
+                            "methods": [
+                                "getEffectiveFirewalls"
+                            ]
+                        },
+                        "GetIamPolicy": {
+                            "methods": [
+                                "getIamPolicy"
+                            ]
+                        },
+                        "GetRule": {
+                            "methods": [
+                                "getRule"
+                            ]
+                        },
+                        "Insert": {
+                            "methods": [
+                                "insert"
+                            ]
+                        },
+                        "List": {
+                            "methods": [
+                                "list"
+                            ]
+                        },
+                        "Patch": {
+                            "methods": [
+                                "patch"
+                            ]
+                        },
+                        "PatchRule": {
+                            "methods": [
+                                "patchRule"
+                            ]
+                        },
+                        "RemoveAssociation": {
+                            "methods": [
+                                "removeAssociation"
+                            ]
+                        },
+                        "RemoveRule": {
+                            "methods": [
+                                "removeRule"
+                            ]
+                        },
+                        "SetIamPolicy": {
+                            "methods": [
+                                "setIamPolicy"
+                            ]
+                        },
+                        "TestIamPermissions": {
+                            "methods": [
+                                "testIamPermissions"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
         "RegionNotificationEndpoints": {
             "clients": {
                 "grpc": {
@@ -2516,6 +2733,40 @@
                         "Wait": {
                             "methods": [
                                 "wait"
+                            ]
+                        }
+                    }
+                }
+            }
+        },
+        "RegionSecurityPolicies": {
+            "clients": {
+                "grpc": {
+                    "libraryClient": "RegionSecurityPoliciesGapicClient",
+                    "rpcs": {
+                        "Delete": {
+                            "methods": [
+                                "delete"
+                            ]
+                        },
+                        "Get": {
+                            "methods": [
+                                "get"
+                            ]
+                        },
+                        "Insert": {
+                            "methods": [
+                                "insert"
+                            ]
+                        },
+                        "List": {
+                            "methods": [
+                                "list"
+                            ]
+                        },
+                        "Patch": {
+                            "methods": [
+                                "patch"
                             ]
                         }
                     }
@@ -2608,6 +2859,11 @@
                         "List": {
                             "methods": [
                                 "list"
+                            ]
+                        },
+                        "Patch": {
+                            "methods": [
+                                "patch"
                             ]
                         },
                         "SetSslCertificates": {
@@ -2891,6 +3147,11 @@
                         "AddRule": {
                             "methods": [
                                 "addRule"
+                            ]
+                        },
+                        "AggregatedList": {
+                            "methods": [
+                                "aggregatedList"
                             ]
                         },
                         "Delete": {

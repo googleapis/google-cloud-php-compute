@@ -34,8 +34,6 @@ class Policy extends \Google\Protobuf\Internal\Message
      */
     protected $etag = null;
     /**
-     * This is deprecated and has no effect. Do not use.
-     *
      * Generated from protobuf field <code>optional bool iam_owned = 450566203;</code>
      */
     protected $iam_owned = null;
@@ -65,7 +63,6 @@ class Policy extends \Google\Protobuf\Internal\Message
      *     @type string $etag
      *           `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost.
      *     @type bool $iam_owned
-     *           This is deprecated and has no effect. Do not use.
      *     @type \Google\Cloud\Compute\V1\Rule[]|\Google\Protobuf\Internal\RepeatedField $rules
      *           This is deprecated and has no effect. Do not use.
      *     @type int $version
@@ -166,8 +163,6 @@ class Policy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * This is deprecated and has no effect. Do not use.
-     *
      * Generated from protobuf field <code>optional bool iam_owned = 450566203;</code>
      * @return bool
      */
@@ -187,8 +182,6 @@ class Policy extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * This is deprecated and has no effect. Do not use.
-     *
      * Generated from protobuf field <code>optional bool iam_owned = 450566203;</code>
      * @param bool $var
      * @return $this

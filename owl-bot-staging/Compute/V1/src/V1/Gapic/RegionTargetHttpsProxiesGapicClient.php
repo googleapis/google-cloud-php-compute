@@ -39,6 +39,7 @@ use Google\Cloud\Compute\V1\GetRegionTargetHttpsProxyRequest;
 use Google\Cloud\Compute\V1\InsertRegionTargetHttpsProxyRequest;
 use Google\Cloud\Compute\V1\ListRegionTargetHttpsProxiesRequest;
 use Google\Cloud\Compute\V1\Operation;
+use Google\Cloud\Compute\V1\PatchRegionTargetHttpsProxyRequest;
 use Google\Cloud\Compute\V1\RegionOperationsClient;
 use Google\Cloud\Compute\V1\RegionTargetHttpsProxiesSetSslCertificatesRequest;
 use Google\Cloud\Compute\V1\SetSslCertificatesRegionTargetHttpsProxyRequest;
@@ -556,6 +557,86 @@ class RegionTargetHttpsProxiesGapicClient
         $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
         $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
         return $this->getPagedListResponse('List', $optionalArgs, TargetHttpsProxyList::class, $request);
+    }
+
+    /**
+     * Patches the specified regional TargetHttpsProxy resource with the data included in the request. This method supports PATCH semantics and uses JSON merge patch format and processing rules.
+     *
+     * Sample code:
+     * ```
+     * $regionTargetHttpsProxiesClient = new RegionTargetHttpsProxiesClient();
+     * try {
+     *     $project = 'project';
+     *     $region = 'region';
+     *     $targetHttpsProxy = 'target_https_proxy';
+     *     $targetHttpsProxyResource = new TargetHttpsProxy();
+     *     $operationResponse = $regionTargetHttpsProxiesClient->patch($project, $region, $targetHttpsProxy, $targetHttpsProxyResource);
+     *     $operationResponse->pollUntilComplete();
+     *     if ($operationResponse->operationSucceeded()) {
+     *         // if creating/modifying, retrieve the target resource
+     *     } else {
+     *         $error = $operationResponse->getError();
+     *         // handleError($error)
+     *     }
+     *     // Alternatively:
+     *     // start the operation, keep the operation name, and resume later
+     *     $operationResponse = $regionTargetHttpsProxiesClient->patch($project, $region, $targetHttpsProxy, $targetHttpsProxyResource);
+     *     $operationName = $operationResponse->getName();
+     *     // ... do other work
+     *     $newOperationResponse = $regionTargetHttpsProxiesClient->resumeOperation($operationName, 'patch');
+     *     while (!$newOperationResponse->isDone()) {
+     *         // ... do other work
+     *         $newOperationResponse->reload();
+     *     }
+     *     if ($newOperationResponse->operationSucceeded()) {
+     *         // if creating/modifying, retrieve the target resource
+     *     } else {
+     *         $error = $newOperationResponse->getError();
+     *         // handleError($error)
+     *     }
+     * } finally {
+     *     $regionTargetHttpsProxiesClient->close();
+     * }
+     * ```
+     *
+     * @param string           $project                  Project ID for this request.
+     * @param string           $region                   Name of the region for this request.
+     * @param string           $targetHttpsProxy         Name of the TargetHttpsProxy resource to patch.
+     * @param TargetHttpsProxy $targetHttpsProxyResource The body resource for this request
+     * @param array            $optionalArgs             {
+     *     Optional.
+     *
+     *     @type string $requestId
+     *           An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported ( 00000000-0000-0000-0000-000000000000).
+     *     @type RetrySettings|array $retrySettings
+     *           Retry settings to use for this call. Can be a
+     *           {@see Google\ApiCore\RetrySettings} object, or an associative array of retry
+     *           settings parameters. See the documentation on
+     *           {@see Google\ApiCore\RetrySettings} for example usage.
+     * }
+     *
+     * @return \Google\ApiCore\OperationResponse
+     *
+     * @throws ApiException if the remote call fails
+     */
+    public function patch($project, $region, $targetHttpsProxy, $targetHttpsProxyResource, array $optionalArgs = [])
+    {
+        $request = new PatchRegionTargetHttpsProxyRequest();
+        $requestParamHeaders = [];
+        $request->setProject($project);
+        $request->setRegion($region);
+        $request->setTargetHttpsProxy($targetHttpsProxy);
+        $request->setTargetHttpsProxyResource($targetHttpsProxyResource);
+        $requestParamHeaders['project'] = $project;
+        $requestParamHeaders['region'] = $region;
+        $requestParamHeaders['target_https_proxy'] = $targetHttpsProxy;
+        if (isset($optionalArgs['requestId'])) {
+            $request->setRequestId($optionalArgs['requestId']);
+        }
+
+        $requestParams = new RequestParamsHeaderDescriptor($requestParamHeaders);
+        $optionalArgs['headers'] = isset($optionalArgs['headers']) ? array_merge($requestParams->getHeader(), $optionalArgs['headers']) : $requestParams->getHeader();
+        return $this->startOperationsCall('Patch', $optionalArgs, $request, $this->getOperationsClient(), null, Operation::class)->wait();
     }
 
     /**

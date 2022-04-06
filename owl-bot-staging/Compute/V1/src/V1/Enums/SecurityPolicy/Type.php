@@ -35,4 +35,6 @@ class Type
     const CLOUD_ARMOR = 'CLOUD_ARMOR';
 
     const CLOUD_ARMOR_EDGE = 'CLOUD_ARMOR_EDGE';
+
+    const CLOUD_ARMOR_NETWORK = 'CLOUD_ARMOR_NETWORK';
 }

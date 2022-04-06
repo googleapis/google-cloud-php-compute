@@ -61,7 +61,7 @@ class RouterStatusBgpPeerStatus extends \Google\Protobuf\Internal\Message
      */
     protected $router_appliance_instance = null;
     /**
-     * BGP state as specified in RFC1771.
+     * The state of the BGP session. For a list of possible values for this field, see BGP session states.
      *
      * Generated from protobuf field <code>optional string state = 109757585;</code>
      */
@@ -108,7 +108,7 @@ class RouterStatusBgpPeerStatus extends \Google\Protobuf\Internal\Message
      *     @type string $router_appliance_instance
      *           [Output only] URI of the VM instance that is used as third-party router appliances such as Next Gen Firewalls, Virtual Routers, or Router Appliances. The VM instance is the peer side of the BGP session.
      *     @type string $state
-     *           BGP state as specified in RFC1771.
+     *           The state of the BGP session. For a list of possible values for this field, see BGP session states.
      *     @type string $status
      *           Status of the BGP peer: {UP, DOWN}
      *           Check the Status enum for the list of possible values.
@@ -398,7 +398,7 @@ class RouterStatusBgpPeerStatus extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * BGP state as specified in RFC1771.
+     * The state of the BGP session. For a list of possible values for this field, see BGP session states.
      *
      * Generated from protobuf field <code>optional string state = 109757585;</code>
      * @return string
@@ -419,7 +419,7 @@ class RouterStatusBgpPeerStatus extends \Google\Protobuf\Internal\Message
     }
 
     /**
-     * BGP state as specified in RFC1771.
+     * The state of the BGP session. For a list of possible values for this field, see BGP session states.
      *
      * Generated from protobuf field <code>optional string state = 109757585;</code>
      * @param string $var
