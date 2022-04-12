@@ -36,6 +36,7 @@ use Google\Cloud\Compute\V1\FirewallPolicyRule;
 use Google\Cloud\Compute\V1\GetGlobalOrganizationOperationRequest;
 use Google\Cloud\Compute\V1\GlobalOrganizationOperationsClient;
 use Google\Cloud\Compute\V1\GlobalOrganizationSetPolicyRequest;
+use Google\Cloud\Compute\V1\InsertFirewallPolicyRequest\ParentIdOneof;
 use Google\Cloud\Compute\V1\Operation;
 use Google\Cloud\Compute\V1\Operation\Status;
 use Google\Cloud\Compute\V1\Policy;
@@ -875,7 +876,9 @@ class FirewallPoliciesClientTest extends GeneratedTest
         $operationsTransport->addResponse($completeOperation);
         // Mock request
         $firewallPolicyResource = new FirewallPolicy();
-        $response = $client->insert($firewallPolicyResource);
+        $parentId = new ParentIdOneof();
+        $parentId->setParentId('parentId2070327504');
+        $response = $client->insert($firewallPolicyResource, $parentId);
         $this->assertFalse($response->isDone());
         $apiRequests = $transport->popReceivedCalls();
         $this->assertSame(1, count($apiRequests));
@@ -886,6 +889,8 @@ class FirewallPoliciesClientTest extends GeneratedTest
         $this->assertSame('/google.cloud.compute.v1.FirewallPolicies/Insert', $actualApiFuncCall);
         $actualValue = $actualApiRequestObject->getFirewallPolicyResource();
         $this->assertProtobufEquals($firewallPolicyResource, $actualValue);
+        $actualValue = $actualApiRequestObject->getParentId();
+        $this->assertProtobufEquals($parentId, $actualValue);
         $expectedOperationsRequestObject = new GetGlobalOrganizationOperationRequest();
         $expectedOperationsRequestObject->setOperation($completeOperation->getName());
         $response->pollUntilComplete([
@@ -939,7 +944,9 @@ class FirewallPoliciesClientTest extends GeneratedTest
         $operationsTransport->addResponse(null, $status);
         // Mock request
         $firewallPolicyResource = new FirewallPolicy();
-        $response = $client->insert($firewallPolicyResource);
+        $parentId = new ParentIdOneof();
+        $parentId->setParentId('parentId2070327504');
+        $response = $client->insert($firewallPolicyResource, $parentId);
         $this->assertFalse($response->isDone());
         $this->assertNull($response->getResult());
         try {
