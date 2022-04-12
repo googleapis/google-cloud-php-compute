@@ -36,7 +36,6 @@ use Google\Cloud\Compute\V1\FirewallPolicyRule;
 use Google\Cloud\Compute\V1\GetGlobalOrganizationOperationRequest;
 use Google\Cloud\Compute\V1\GlobalOrganizationOperationsClient;
 use Google\Cloud\Compute\V1\GlobalOrganizationSetPolicyRequest;
-use Google\Cloud\Compute\V1\InsertFirewallPolicyRequest\ParentIdOneof;
 use Google\Cloud\Compute\V1\Operation;
 use Google\Cloud\Compute\V1\Operation\Status;
 use Google\Cloud\Compute\V1\Policy;
@@ -876,8 +875,7 @@ class FirewallPoliciesClientTest extends GeneratedTest
         $operationsTransport->addResponse($completeOperation);
         // Mock request
         $firewallPolicyResource = new FirewallPolicy();
-        $parentId = new ParentIdOneof();
-        $parentId->setParentId('parentId2070327504');
+        $parentId = 'parentId2070327504';
         $response = $client->insert($firewallPolicyResource, $parentId);
         $this->assertFalse($response->isDone());
         $apiRequests = $transport->popReceivedCalls();
@@ -944,8 +942,7 @@ class FirewallPoliciesClientTest extends GeneratedTest
         $operationsTransport->addResponse(null, $status);
         // Mock request
         $firewallPolicyResource = new FirewallPolicy();
-        $parentId = new ParentIdOneof();
-        $parentId->setParentId('parentId2070327504');
+        $parentId = 'parentId2070327504';
         $response = $client->insert($firewallPolicyResource, $parentId);
         $this->assertFalse($response->isDone());
         $this->assertNull($response->getResult());

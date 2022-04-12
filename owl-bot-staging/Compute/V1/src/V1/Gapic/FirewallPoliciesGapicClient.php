@@ -50,7 +50,6 @@ use Google\Cloud\Compute\V1\GetRuleFirewallPolicyRequest;
 use Google\Cloud\Compute\V1\GlobalOrganizationOperationsClient;
 use Google\Cloud\Compute\V1\GlobalOrganizationSetPolicyRequest;
 use Google\Cloud\Compute\V1\InsertFirewallPolicyRequest;
-use Google\Cloud\Compute\V1\InsertFirewallPolicyRequest\ParentIdOneof;
 use Google\Cloud\Compute\V1\ListAssociationsFirewallPolicyRequest;
 use Google\Cloud\Compute\V1\ListFirewallPoliciesRequest;
 use Google\Cloud\Compute\V1\MoveFirewallPolicyRequest;
@@ -763,7 +762,7 @@ class FirewallPoliciesGapicClient
      * $firewallPoliciesClient = new FirewallPoliciesClient();
      * try {
      *     $firewallPolicyResource = new FirewallPolicy();
-     *     $parentId = (new ParentIdOneof())->setParentId('parent_id');
+     *     $parentId = 'parent_id';
      *     $operationResponse = $firewallPoliciesClient->insert($firewallPolicyResource, $parentId);
      *     $operationResponse->pollUntilComplete();
      *     if ($operationResponse->operationSucceeded()) {
@@ -794,7 +793,7 @@ class FirewallPoliciesGapicClient
      * ```
      *
      * @param FirewallPolicy $firewallPolicyResource The body resource for this request
-     * @param ParentIdOneof  $parentId               An instance of the wrapper class for the required proto oneof _parent_id.
+     * @param string         $parentId               Parent ID for this request. The ID can be either be "folders/[FOLDER_ID]" if the parent is a folder or "organizations/[ORGANIZATION_ID]" if the parent is an organization.
      * @param array          $optionalArgs           {
      *     Optional.
      *
@@ -815,13 +814,7 @@ class FirewallPoliciesGapicClient
     {
         $request = new InsertFirewallPolicyRequest();
         $request->setFirewallPolicyResource($firewallPolicyResource);
-        if ($parentId->isParentId()) {
-            $request->setParentId($parentId->getParentId());
-        } else {
-            throw new ValidationException("A field for the oneof _parent_id must be set in param $parentId");
-        }
-
-        
+        $request->setParentId($parentId);
         if (isset($optionalArgs['requestId'])) {
             $request->setRequestId($optionalArgs['requestId']);
         }
