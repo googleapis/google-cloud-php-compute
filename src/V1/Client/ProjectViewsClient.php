@@ -32,31 +32,25 @@ use Google\ApiCore\RetrySettings;
 use Google\ApiCore\Transport\TransportInterface;
 use Google\ApiCore\ValidationException;
 use Google\Auth\FetchAuthTokenInterface;
-use Google\Cloud\Compute\V1\CalendarModeAdviceResponse;
-use Google\Cloud\Compute\V1\CalendarModeAdviceRpcRequest;
-use Google\Cloud\Compute\V1\CapacityAdviceResponse;
-use Google\Cloud\Compute\V1\CapacityAdviceRpcRequest;
-use Google\Cloud\Compute\V1\CapacityHistoryAdviceRequest;
-use Google\Cloud\Compute\V1\CapacityHistoryResponse;
+use Google\Cloud\Compute\V1\GetProjectViewRequest;
+use Google\Cloud\Compute\V1\ProjectView;
 use GuzzleHttp\Promise\PromiseInterface;
 use Psr\Log\LoggerInterface;
 
 /**
- * Service Description: The Advice API.
+ * Service Description: The ProjectViews API.
  *
  * This class provides the ability to make remote calls to the backing service through method
  * calls that map to API methods.
  *
- * @method PromiseInterface<CalendarModeAdviceResponse> calendarModeAsync(CalendarModeAdviceRpcRequest $request, array $optionalArgs = [])
- * @method PromiseInterface<CapacityAdviceResponse> capacityAsync(CapacityAdviceRpcRequest $request, array $optionalArgs = [])
- * @method PromiseInterface<CapacityHistoryResponse> capacityHistoryAsync(CapacityHistoryAdviceRequest $request, array $optionalArgs = [])
+ * @method PromiseInterface<ProjectView> getAsync(GetProjectViewRequest $request, array $optionalArgs = [])
  */
-final class AdviceClient
+final class ProjectViewsClient
 {
     use GapicClientTrait;
 
     /** The name of the service. */
-    private const SERVICE_NAME = 'google.cloud.compute.v1.Advice';
+    private const SERVICE_NAME = 'google.cloud.compute.v1.ProjectViews';
 
     /**
      * The default address of the service.
@@ -80,6 +74,7 @@ final class AdviceClient
      * @internal
      */
     public static $serviceScopes = [
+        'https://www.googleapis.com/auth/compute.readonly',
         'https://www.googleapis.com/auth/compute',
         'https://www.googleapis.com/auth/cloud-platform',
     ];
@@ -89,15 +84,15 @@ final class AdviceClient
         return [
             'serviceName' => self::SERVICE_NAME,
             'apiEndpoint' => self::SERVICE_ADDRESS . ':' . self::DEFAULT_SERVICE_PORT,
-            'clientConfig' => __DIR__ . '/../resources/advice_client_config.json',
-            'descriptorsConfigPath' => __DIR__ . '/../resources/advice_descriptor_config.php',
+            'clientConfig' => __DIR__ . '/../resources/project_views_client_config.json',
+            'descriptorsConfigPath' => __DIR__ . '/../resources/project_views_descriptor_config.php',
             'credentialsConfig' => [
                 'defaultScopes' => self::$serviceScopes,
                 'useJwtAccessWithScope' => false,
             ],
             'transportConfig' => [
                 'rest' => [
-                    'restClientConfigPath' => __DIR__ . '/../resources/advice_rest_client_config.php',
+                    'restClientConfigPath' => __DIR__ . '/../resources/project_views_rest_client_config.php',
                 ],
             ],
         ];
@@ -135,9 +130,9 @@ final class AdviceClient
      *           of your systems and data. It is recommended to create the credentials explicitly
      *           ```
      *           use Google\Auth\Credentials\ServiceAccountCredentials;
-     *           use Google\Cloud\Compute\V1\AdviceClient;
+     *           use Google\Cloud\Compute\V1\ProjectViewsClient;
      *           $creds = new ServiceAccountCredentials($scopes, $json);
-     *           $options = new AdviceClient(['credentials' => $creds]);
+     *           $options = new ProjectViewsClient(['credentials' => $creds]);
      *           ```
      *           {@see
      *           https://cloud.google.com/docs/authentication/external/externally-sourced-credentials}
@@ -198,17 +193,21 @@ final class AdviceClient
     }
 
     /**
-     * Advise how, where and when to create the requested amount of instances
-     * with specified accelerators, within the specified time and location limits.
-     * The method recommends creating future reservations for the requested
-     * resources.
+     * Returns the specified global ProjectViews resource, with a regional
+     * context.
+     * This regional API endpoint reads resource metadata from regional
+     * read-only replicas. Because changes are copied to these regional replicas
+     * asynchronously, for real-time resource reads or any write operations
+     * (creating, updating, or deleting resources), use the global
+     * [projects.get](https://cloud.google.com/compute/docs/reference/rest/v1/projects/get)
+     * endpoint.
      *
-     * The async variant is {@see AdviceClient::calendarModeAsync()} .
+     * The async variant is {@see ProjectViewsClient::getAsync()} .
      *
-     * @example samples/V1/AdviceClient/calendar_mode.php
+     * @example samples/V1/ProjectViewsClient/get.php
      *
-     * @param CalendarModeAdviceRpcRequest $request     A request to house fields associated with the call.
-     * @param array                        $callOptions {
+     * @param GetProjectViewRequest $request     A request to house fields associated with the call.
+     * @param array                 $callOptions {
      *     Optional.
      *
      *     @type RetrySettings|array $retrySettings
@@ -217,70 +216,12 @@ final class AdviceClient
      *           {@see RetrySettings} for example usage.
      * }
      *
-     * @return CalendarModeAdviceResponse
+     * @return ProjectView
      *
      * @throws ApiException Thrown if the API call fails.
      */
-    public function calendarMode(
-        CalendarModeAdviceRpcRequest $request,
-        array $callOptions = []
-    ): CalendarModeAdviceResponse {
-        return $this->startApiCall('CalendarMode', $request, $callOptions)->wait();
-    }
-
-    /**
-     * Advice on making real-time decisions (such as choosing zone or
-     * machine types) during deployment to maximize your chances of obtaining
-     * capacity.
-     *
-     * The async variant is {@see AdviceClient::capacityAsync()} .
-     *
-     * @example samples/V1/AdviceClient/capacity.php
-     *
-     * @param CapacityAdviceRpcRequest $request     A request to house fields associated with the call.
-     * @param array                    $callOptions {
-     *     Optional.
-     *
-     *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
-     *           associative array of retry settings parameters. See the documentation on
-     *           {@see RetrySettings} for example usage.
-     * }
-     *
-     * @return CapacityAdviceResponse
-     *
-     * @throws ApiException Thrown if the API call fails.
-     */
-    public function capacity(CapacityAdviceRpcRequest $request, array $callOptions = []): CapacityAdviceResponse
+    public function get(GetProjectViewRequest $request, array $callOptions = []): ProjectView
     {
-        return $this->startApiCall('Capacity', $request, $callOptions)->wait();
-    }
-
-    /**
-     * Gets the capacity history.
-     *
-     * The async variant is {@see AdviceClient::capacityHistoryAsync()} .
-     *
-     * @example samples/V1/AdviceClient/capacity_history.php
-     *
-     * @param CapacityHistoryAdviceRequest $request     A request to house fields associated with the call.
-     * @param array                        $callOptions {
-     *     Optional.
-     *
-     *     @type RetrySettings|array $retrySettings
-     *           Retry settings to use for this call. Can be a {@see RetrySettings} object, or an
-     *           associative array of retry settings parameters. See the documentation on
-     *           {@see RetrySettings} for example usage.
-     * }
-     *
-     * @return CapacityHistoryResponse
-     *
-     * @throws ApiException Thrown if the API call fails.
-     */
-    public function capacityHistory(
-        CapacityHistoryAdviceRequest $request,
-        array $callOptions = []
-    ): CapacityHistoryResponse {
-        return $this->startApiCall('CapacityHistory', $request, $callOptions)->wait();
+        return $this->startApiCall('Get', $request, $callOptions)->wait();
     }
 }
